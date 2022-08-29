@@ -11,7 +11,8 @@ import {
     GetAllBoardController,
     GetOneBoardController,
     CreateBoardController,
-    UpdateBoardController
+    GetAllColumnsController,
+    GetAllTasksController
 } from './controllers'
 
 
@@ -32,7 +33,10 @@ routes.get('/api/user',ensuredAuthenticated(), currentUser())
 routes.get('/api/boards', ensuredAuthenticated(), new GetAllBoardController().handle)
 routes.post('/api/boards', ensuredAuthenticated(), new CreateBoardController().handle)
 routes.get('/api/boards/:id', ensuredAuthenticated(), new GetOneBoardController().handle)
-routes.put('/api/boards/:id', ensuredAuthenticated(), new UpdateBoardController().handle)
+
+routes.get('/api/boards/:boardId/columns', ensuredAuthenticated(), new GetAllColumnsController().handle)
+
+routes.get('/api/boards/:boardId/tasks', ensuredAuthenticated(), new GetAllTasksController().handle)
 
 export { routes }
 

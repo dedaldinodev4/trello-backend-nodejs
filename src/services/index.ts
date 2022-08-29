@@ -12,6 +12,17 @@ import { CreateBoardService } from './Board/CreateBoardService'
 import { UpdateBoardService } from './Board/UpdateBoardService'
 import { LeaveBoardService } from './Board/LeaveBoardService'
 import { JoinBoardService } from './Board/JoinBoardService'
+import { DeleteBoardService } from './Board/DeleteBoardService'
+
+
+import { CreateColumnService } from './Column/CreateColumnService'
+import { GetAllColumnsService } from './Column/GetAllColumnsService'
+import { UpdateColumnService } from './Column/UpdateColumnService'
+import { DeleteColumnService } from './Column/DeleteColumnService'
+
+import { CreateTaskService } from './Task/CreateTaskService'
+import { GetAllTasksService } from './Task/GetAllTasksService'
+
 
 
 export {
@@ -26,5 +37,12 @@ export {
     CreateBoardService,
     UpdateBoardService,
     LeaveBoardService,
+    DeleteBoardService,
     JoinBoardService,
+    CreateColumnService,
+    GetAllColumnsService,
+    UpdateColumnService,
+    DeleteColumnService,
+    CreateTaskService,
+    GetAllTasksService,
 }

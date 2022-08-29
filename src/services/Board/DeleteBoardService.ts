@@ -5,10 +5,10 @@ import { ISocket, ISocketEvents } from "../../dtos/Socket";
 import { getErrorMessage } from "../../helpers/Errors";
 
 
-export const UpdateBoardService  = {
+export const DeleteBoardService  = {
 
     execute: async (io: Server, socket: ISocket, 
-        data: { boardId: string, fields: {title: string } }
+        data: { boardId: string }
     ) => {
 
         try {
@@ -17,24 +17,16 @@ export const UpdateBoardService  = {
 
             if (!socket.user) {
                 socket.emit(
-                  ISocketEvents.boardsUpdateFailure,
+                  ISocketEvents.boardsDeleteFailure,
                   "User is not authorized"
                 );
                 return;
             }
     
-            const updatedBoard = await _repository.findByIdAndUpdate(
-                data.boardId,
-                data.fields,
-                {new: true}
-            );
-            
-            io.to(data.boardId).emit(
-                ISocketEvents.boardsUpdateSuccess,
-                updatedBoard
-              );
+            await _repository.deleteOne({ _id: data.boardId});
+            io.to(data.boardId).emit( ISocketEvents.boardsDeleteSuccess);
         } catch(err) {
-            socket.emit(ISocketEvents.boardsUpdateFailure, getErrorMessage(err));
+            socket.emit(ISocketEvents.boardsDeleteFailure, getErrorMessage(err));
         }
     }
 }

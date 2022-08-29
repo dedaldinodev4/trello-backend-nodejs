@@ -5,7 +5,16 @@ import { userRepository } from './repositories'
 import { ioServer, httpServer } from "./server";
 import { configs } from './configs'
 import { ISocketEvents } from './dtos/Socket';
-import { LeaveBoardService, JoinBoardService } from './services';
+import { 
+    LeaveBoardService, 
+    JoinBoardService, 
+    CreateColumnService,
+    CreateTaskService,
+    UpdateBoardService,
+    DeleteBoardService,
+    UpdateColumnService,
+    DeleteColumnService
+ } from './services';
 import { ISocket } from './dtos/Socket'
 
 
@@ -13,7 +22,7 @@ dotenv.config();
 
 const { APP_PORT, JWT_STRING } = configs.variables.app;
 const { MONGO_STRING, 
-        MONGO_DB } = configs.variables.mongo;
+        MONGO_DB, MONGO_LOCAL } = configs.variables.mongo;
 
 ioServer
     .use(async (socket: ISocket, next) => {
@@ -43,7 +52,6 @@ ioServer
         }
     })
     .on("connection", (socket) => {
-       console.log('Connected socket')
         socket.on(ISocketEvents.boardsJoin, (data) => {
             JoinBoardService.execute(ioServer, socket, data)
         })
@@ -51,6 +59,30 @@ ioServer
         socket.on(ISocketEvents.boardsLeave, (data) => {
             LeaveBoardService.execute(ioServer, socket, data)
         });
+
+        socket.on(ISocketEvents.columnsCreate, data => {
+            CreateColumnService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.tasksCreate, data => {
+            CreateTaskService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.boardsUpdate, data => {
+            UpdateBoardService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.boardsDelete, data => {
+            DeleteBoardService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.columnsUpdate, data => {
+            UpdateColumnService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.columnsDelete, data => {
+            DeleteColumnService.execute(ioServer, socket, data)
+        })
     })
         
 

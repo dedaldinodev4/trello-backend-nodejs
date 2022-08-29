@@ -8,7 +8,10 @@ import { UpdateUserController } from './User/UpdateUserController';
 import { GetAllBoardController } from './Board/GetAllBoardController'
 import { GetOneBoardController } from './Board/GetOneBoardController'
 import { CreateBoardController } from './Board/CreateBoardController'
-import { UpdateBoardController } from './Board/UpdateBoardController'
+
+import { GetAllColumnsController } from './Column/GetAllColumnsController';
+
+import { GetAllTasksController } from './Task/GetAllTasksController';
 
 export {
     LoginController,
@@ -19,5 +22,6 @@ export {
     GetAllBoardController,
     GetOneBoardController,
     CreateBoardController,
-    UpdateBoardController
+    GetAllColumnsController,
+    GetAllTasksController
 }

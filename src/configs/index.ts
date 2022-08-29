@@ -4,7 +4,8 @@ dotenv.config();
 
 const {
     APP_PORT, APP_BASEURL,
-    MONGO_DB, MONGO_STRING, JWT_STRING
+    MONGO_DB, MONGO_STRING, JWT_STRING,
+    MONGO_LOCAL
 } = process.env;
 
 export const configs = {
@@ -16,7 +17,8 @@ export const configs = {
         },
         mongo: {
             MONGO_STRING,
-            MONGO_DB
+            MONGO_DB,
+            MONGO_LOCAL,
         }
     }        
 }
