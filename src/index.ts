@@ -23,8 +23,10 @@ import { ISocket } from './dtos/Socket'
 dotenv.config();
 
 const { APP_PORT, JWT_STRING } = configs.variables.app;
-const { MONGO_STRING, 
+const { MONGO_STRING, MONGO_CLUSTER,
         MONGO_DB } = configs.variables.mongo;
+
+const _PORT = APP_PORT || 5050;
 
 ioServer
     .use(async (socket: ISocket, next) => {
@@ -97,12 +99,12 @@ ioServer
     })
         
 
-mongoose.connect(`${MONGO_STRING}${MONGO_DB}`)
+mongoose.connect(`${MONGO_CLUSTER}`)
     .then(res => console.log('Database connected.'))
     .catch(err => console.log(err));
 
-httpServer.listen(APP_PORT, () => {
-    console.log(`Api is listening on port ${APP_PORT}`);    
+httpServer.listen(_PORT, () => {
+    console.log(`Api is listening on port ${_PORT}`);    
 })
 
    

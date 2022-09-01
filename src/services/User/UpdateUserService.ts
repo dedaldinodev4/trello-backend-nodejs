@@ -3,7 +3,7 @@ import { IUser, IUserUpdateRequest } from "../../dtos/User";
 
 export class UpdateUserService {
 
-    async execute (id, {username, email }
+    async execute (id: string, {username, email }
         : IUserUpdateRequest): Promise<IUser | Error> {
 
 
