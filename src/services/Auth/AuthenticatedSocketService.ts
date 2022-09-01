@@ -15,11 +15,11 @@ export const AuthenticatedSocketService = {
     async execute (socket: ISocket, next:NextFunction ) {
         try {
             const token = (socket.handshake.auth.token as string)
-            const data = jwt.verify(token.split(" ")[1], JWT_STRING);
+            const data = jwt.verify(token.split(" ")[1], JWT_STRING) as {email: string, id: string};
 
-            const repo = useRepository();
+            const _repo = userRepository();
 
-            const user = await repo.findById(data.id);
+            const user = await _repo.findById(data.id);
 
             if (!user) {
                 return next(new Error("Authentication error"));

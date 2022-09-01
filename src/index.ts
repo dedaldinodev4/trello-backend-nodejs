@@ -41,7 +41,7 @@ ioServer
             const _repository = userRepository();
 
             const [, token] = tokenString.split(" ")
-            const data = jwt.verify(token, JWT_STRING);
+            const data = jwt.verify(token, JWT_STRING) as {email: string, id: string};
 
             const user = await _repository.findById(data.id);
 
