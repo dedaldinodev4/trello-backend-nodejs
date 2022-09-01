@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "license": "MIT",
+  "author": "Dedaldino Daniel",
+  "homepage": "https://github.com/dedaldinodev4/trello-backend-nodejs",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules src/index.ts",
     "prebuild": "echo --- tslint -c tslint.json -p tsconfig.json --fix",
