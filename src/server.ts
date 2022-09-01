@@ -11,7 +11,7 @@ const server = express()
 const httpServer = createServer(server) 
 const ioServer = new Server(httpServer, {
     cors: {
-        origin: "https://trello-wheat.vercel.app",
+        origin: "*",
     }
 })
 
