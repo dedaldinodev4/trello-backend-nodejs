@@ -22,8 +22,8 @@ import { DeleteColumnService } from './Column/DeleteColumnService'
 
 import { CreateTaskService } from './Task/CreateTaskService'
 import { GetAllTasksService } from './Task/GetAllTasksService'
-
-
+import { UpdateTaskService } from './Task/UpdateTaskService'
+import { DeleteTaskService } from './Task/DeleteTaskService'
 
 export {
     RegisterService,
@@ -45,4 +45,6 @@ export {
     DeleteColumnService,
     CreateTaskService,
     GetAllTasksService,
+    UpdateTaskService, 
+    DeleteTaskService,
 }

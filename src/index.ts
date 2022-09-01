@@ -13,7 +13,9 @@ import {
     UpdateBoardService,
     DeleteBoardService,
     UpdateColumnService,
-    DeleteColumnService
+    DeleteColumnService,
+    UpdateTaskService,
+    DeleteTaskService
  } from './services';
 import { ISocket } from './dtos/Socket'
 
@@ -22,7 +24,7 @@ dotenv.config();
 
 const { APP_PORT, JWT_STRING } = configs.variables.app;
 const { MONGO_STRING, 
-        MONGO_DB, MONGO_LOCAL } = configs.variables.mongo;
+        MONGO_DB } = configs.variables.mongo;
 
 ioServer
     .use(async (socket: ISocket, next) => {
@@ -83,10 +85,19 @@ ioServer
         socket.on(ISocketEvents.columnsDelete, data => {
             DeleteColumnService.execute(ioServer, socket, data)
         })
+
+        socket.on(ISocketEvents.tasksUpdate, data => {
+            UpdateTaskService.execute(ioServer, socket, data)
+        })
+
+        socket.on(ISocketEvents.tasksDelete, data => {
+            console.log('Event task deleted')
+            DeleteTaskService.execute(ioServer, socket, data)
+        })
     })
         
 
-mongoose.connect(`${MONGO_STRING}`)
+mongoose.connect(`${MONGO_STRING}${MONGO_DB}`)
     .then(res => console.log('Database connected.'))
     .catch(err => console.log(err));
 

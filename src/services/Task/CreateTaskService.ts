@@ -37,7 +37,7 @@ export const CreateTaskService  = {
                 ISocketEvents.tasksCreateSuccess,
                 taskSave
               );
-              console.log("taskSave", taskSave);
+              
         } catch(err) {
             socket.emit(ISocketEvents.tasksCreateFailure, getErrorMessage(err));
         }

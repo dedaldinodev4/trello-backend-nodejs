@@ -31,12 +31,10 @@ export const CreateColumnService  = {
             });
     
             const columnSave = await column.save();
-            
             io.to(data.boardId).emit(
                 ISocketEvents.columnsCreateSuccess,
                 columnSave
               );
-              console.log("columnSave", columnSave);
         } catch(err) {
             socket.emit(ISocketEvents.columnsCreateFailure, getErrorMessage(err));
         }
