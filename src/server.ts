@@ -14,7 +14,7 @@ const ioServer = new Server(httpServer, {
         origin: "*",
         credentials: true,
         allowedHeaders:"*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     }
 })
 
