@@ -7,7 +7,7 @@ BEYW5pZWwiLCJpYXQiOjE1MTYyMzkwMjJ9.Yp-tQG_Z8PBijiai8znsAnSQs_-VPvSxl65f4-6E6ekV`
 
 const {
     APP_PORT, APP_BASEURL,
-    MONGO_DB, MONGO_STRING,
+    MONGO_DB, MONGO_STRING, 
     MONGO_CLUSTER
 } = process.env;
 
