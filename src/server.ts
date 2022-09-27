@@ -12,9 +12,9 @@ const httpServer = createServer(server)
 const ioServer = new Server(httpServer, {
     cors: {
         origin: "*",
-        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders:"*",
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        credentials: true,
     }
 })
 
