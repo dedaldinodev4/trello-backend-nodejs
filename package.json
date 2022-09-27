@@ -10,7 +10,7 @@
     "prebuild": "echo --- tslint -c tslint.json -p tsconfig.json --fix",
     "build": "rimraf build && tsc",
     "prestart": "npm run build",
-    "start": "node ."
+    "start": "node ./build/index.js"
   },
   "engines": {
     "node": "14.x"
